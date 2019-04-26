@@ -28,7 +28,7 @@ The framework provides a liveness feature that uses our advanced AI Engines to t
 				- [Properties](#properties)
 			- [Face Capture](#face-capture)
 				- [Properties](#properties)
-		        - [QR Scan Capture](#)		
+ 		
 		- [Integrating Liveness in Face Capture](#integrating-liveness-in-face-capture)
                 
 	- [QR Scan Capture](#qr-scan-capture)			
@@ -286,7 +286,7 @@ If all the gestures are succefully performed and the face matches are sucessful,
 - `imageUri` : String. Local path of the image captured <br/>
 - `live`: String with values 'yes'/'no'. Tells whether the selfie is live or not.
 
-#### QRScan Capture
+#### QR Scan Capture
 
 ```
 //Set optional Parameters
