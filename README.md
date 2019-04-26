@@ -28,7 +28,10 @@ The framework provides a liveness feature that uses our advanced AI Engines to t
 				- [Properties](#properties)
 			- [Face Capture](#face-capture)
 				- [Properties](#properties)
+		        - [QR Scan Capture](#)		
 		- [Integrating Liveness in Face Capture](#integrating-liveness-in-face-capture)
+                - [QR Scan Capture](#qr-scan-capture)		
+		
 	- [Error Codes](#error-codes)
 
 
@@ -272,17 +275,18 @@ Here, `livenessMode` is an enum in`HypeSnapParams`, it can take 3 values:
 
 **.LivenessModeTextureLiveness** : Texture liveness test is performed on the selfie captured.  If successful, a result dictionary with the following key-value pairs is returned in the closure
 
-- `imageUri` : String. Local path of the image captured <br/>
-- `live`: String with values 'yes'/'no'. Tells whether the selfie is live or not.
-- `liveness-score`: Float with values between 0 and 1. The confidence score for the liveness prediction.
-- `to-be-reviewed`: String with values 'yes'/'no'. Yes indicates that it is flagged for manual review.
+- `imageUri`: String. Local path of the image captured.
+- `result`: JSONObject. This is the result obtained from the liveness API call. It has 3 key-value pairs.
+    - `live`: String with values 'yes'/'no'. Tells whether the selfie is live or not.
+    - `liveness-score`: Float with values between 0 and 1. The  confidence score for the liveness prediction. This score  would only be required for debugging purposes.
+    - `to-be-reviewed`: String with values 'yes'/'no'. Yes indicates that it is flagged for manual review.
 
 **.LivenessModeTextureAndGestureLiveness**: In this mode, based on the results of the texture Liveness call, the user might be asked to do a series of gestures to confirm liveness. The user performing the gestures is arbitrarily matched with the selfie captured. If  one or more of these matches fail, a 'faceMatch' error is returned (refer to 'Error Codes' section).
 If all the gestures are succefully performed and the face matches are sucessful, a result dictionary with the following key-value pairs is returned in the closure
 - `imageUri` : String. Local path of the image captured <br/>
 - `live`: String with values 'yes'/'no'. Tells whether the selfie is live or not.
 
-#### QR Scan  Capture
+#### QRScan Capture
 
 ```
 //Set optional Parameters
