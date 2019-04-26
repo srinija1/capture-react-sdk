@@ -30,8 +30,8 @@ The framework provides a liveness feature that uses our advanced AI Engines to t
 				- [Properties](#properties)
 		        - [QR Scan Capture](#)		
 		- [Integrating Liveness in Face Capture](#integrating-liveness-in-face-capture)
-                - [QR Scan Capture](#qr-scan-capture)		
-		
+                
+	- [QR Scan Capture](#qr-scan-capture)			
 	- [Error Codes](#error-codes)
 
 
