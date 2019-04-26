@@ -10,6 +10,10 @@ import com.facebook.react.bridge.ReactMethod;
 import co.hyperverge.hypersnapsdk.HyperSnapSDK;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 
+import co.hyperverge.hypersnapsdk.objects.HVDocConfig;
+import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
+
+
 public class RNHyperSnapSDK extends ReactContextBaseJavaModule{
 
 
@@ -28,7 +32,7 @@ public class RNHyperSnapSDK extends ReactContextBaseJavaModule{
         String[] productParams = productValue.split("\\.");
         HyperSnapParams.Region region = getHVHyperSnapParam(regionParams[0],regionParams[1], HyperSnapParams.Region.class);
         HyperSnapParams.Product product = getHVHyperSnapParam(productParams[0],productParams[1],HyperSnapParams.Product.class);
-        HyperSnapSDK.init(getCurrentActivity().getApplicationContext(), appId,appName,region,product);
+        HyperSnapSDK.init(getCurrentActivity() , appId,appName,region,product);
 
     }
 
@@ -41,10 +45,10 @@ public class RNHyperSnapSDK extends ReactContextBaseJavaModule{
                 return  type.cast(HyperSnapParams.Region.valueOf(param));
             }
             case "Document":{
-                return type.cast(HyperSnapParams.Document.valueOf(param));
+                return type.cast(HVDocConfig.Document.valueOf(param));
             }
             case "LivenessMode":{
-                return type.cast(HyperSnapParams.LivenessMode.valueOf(param));
+                return type.cast(HVFaceConfig.LivenessMode.valueOf(param));
             }
             default:{
                 return null;

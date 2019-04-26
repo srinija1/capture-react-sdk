@@ -22,7 +22,9 @@ public class RNHyperSnapSDKBridge implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new RNHyperSnapSDK(reactContext));
         modules.add(new RNHVDocsCapture(reactContext));
+        modules.add(new RNHVQRScanCapture(reactContext));
         modules.add(new RNHVFaceCapture(reactContext));
+        modules.add(new RNHVNetworkHelper(reactContext));
         modules.add(new RNHyperSnapParams(reactContext));
         return modules;
     }
