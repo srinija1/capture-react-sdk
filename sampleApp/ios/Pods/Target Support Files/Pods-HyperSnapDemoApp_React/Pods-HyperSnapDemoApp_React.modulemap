@@ -1,0 +1,6 @@
+framework module Pods_HyperSnapDemoApp_React {
+  umbrella header "Pods-HyperSnapDemoApp_React-umbrella.h"
+
+  export *
+  module * { export * }
+}
