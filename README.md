@@ -88,12 +88,11 @@ Create React Native project and add the HyperSnapSDK's React Native module to it
   ```groovy
   android {
       defaultConfig {
-          renderscriptTargetApi 19
-          renderscriptSupportModeEnabled true
+          
 	  }
   }
   dependencies {
-      implementation('co.hyperverge:hypersnapsdk:2.0.3@aar', {
+      implementation('co.hyperverge:hypersnapsdk:2.4.6.2@aar', {
           transitive=true
           exclude group: 'com.android.support'
       })
@@ -177,7 +176,7 @@ import {
 
 - Create constants of the classes from the SDK
 ```
-const {RNHyperSnapSDK, RNHVDocsCapture, RNHVFaceCapture, RNHyperSnapParams} = NativeModules;
+const {RNHyperSnapSDK, RNHVDocsCapture, RNHVFaceCapture, RNHVQRScanCapture,  RNHyperSnapParams} = NativeModules;
 ```
 
 ### 2. Initialize the SDK
@@ -196,9 +195,10 @@ To present the capture screen for document capture and face capture, call the `s
 #### Document Capture
 ```
 //Set optional Parameters
+        RNHVDocsCapture.createNewConfig();
 	RNHVDocsCapture.setDocumentType(RNHyperSnapParams.DocumentTypeCard);
-	RNHVDocsCapture.setTopText("National ID");
-	RNHVDocsCapture.setBottomText("Place your National ID inside the box");
+	RNHVDocsCapture.setDocCaptureSubText("National ID");
+	RNHVDocsCapture.setDocCaptureDescription("Place your National ID inside the box");
 
 	var closure = (error,result) => {
 		if(error != null){
@@ -232,8 +232,12 @@ If the document is not set, it defaults to `.DocumentTypeCard`.
 
 ```
 //Set optional Parameters
+        RNHVFaceCapture.createNewConfig();
+        RNHVFaceCapture.setCustomUIStrings(" "); 
+        RNHVFaceCapture.setShouldShowInstructionPage(true);
+        RNHVFaceCapture.setFaceCaptureTitle("Face react native capture");
 	RNHVFaceCapture.setLivenessMode(RNHyperSnapParams.LivenessModeTextureLiveness);
-	var closure = (error,result) => {
+	var closure = (error,result,headers) => {
 		if(error != null){
 			//Handle error
           }
@@ -247,12 +251,13 @@ If the document is not set, it defaults to `.DocumentTypeCard`.
 
 ##### Properties
 These are the properties to be set while initializing Face Capture.
-- `closure` (required): This is the only argument passed to the start method. This is a closure with two dictionaries: `error` and `result`. The closure is called when a capture is successful or when an error has occured. The values of `error` and  `result` received by the closure determine whether the call was a success or failure. </br>
+- `closure` (required): This is the only argument passed to the start method. This is a closure with three dictionaries: `error`, `headers` and `result`. The closure is called when a capture is successful or when an error has occured. The values of `error`, `headers` and  `result` received by the closure determine whether the call was a success or failure. </br>
     - `error`: If the capture is successful, the error is set to `null`. Otherwise, it is an dictionary with following information
         - `errorCode`: Integer - Error code stating type of error. (discussed later)
         - `errorMessage`: String - Explanation for the error.
     - `result`:  If the capture failed, this is set to `null` and a corresponding error is set in `error`. If a capture was successful, it will have atleast one key-value pair. The key is `imageUri` and the value is the local path of the captured image. It may have more key-value pairs based on the `livenessMode` (next section).
  - livenessMode (optional) : Discussed in the next section.
+    - `headers`: If the liveness call has reached the HyperVerge servers, this object would have the headers returned by the server. Otherwise, it will be null.
 
 ### Integrating Liveness in Face Capture
 
@@ -277,7 +282,31 @@ If all the gestures are succefully performed and the face matches are sucessful,
 - `imageUri` : String. Local path of the image captured <br/>
 - `live`: String with values 'yes'/'no'. Tells whether the selfie is live or not.
 
+#### QR Scan  Capture
 
+```
+//Set optional Parameters
+       
+	var closure = (error,result ) => {
+		if(error != null){
+			//Handle error
+          }
+          else{
+             //Handle result
+          }
+      }
+//Call the start method
+	RNHVQRScanCapture.start(closure)
+```
+
+##### Properties
+These are the properties to be set while initializing Face Capture.
+- `closure` (required): This is the only argument passed to the start method. This is a closure with two dictionaries: `error` and `result`. The closure is called when a capture is successful or when an error has occured. The values of `error` and  `result` received by the closure determine whether the call was a success or failure. </br>
+    - `error`: If the capture is successful, the error is set to `null`. Otherwise, it is an dictionary with following information
+        - `errorCode`: Integer - Error code stating type of error. (discussed later)
+        - `errorMessage`: String - Explanation for the error.
+    - `result`:  If the capture failed, this is set to `null` and a corresponding error is set in `error`. If qr scan was successful, it will have the qr values extracted from the image scanned.  
+   
 ## Error Codes
 
 Descriptions of the error codes returned in the closure are given here.
