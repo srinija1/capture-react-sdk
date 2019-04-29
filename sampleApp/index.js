@@ -3,7 +3,9 @@ import { PermissionsAndroid, Alert, TouchableHighlight, Modal,Platform,AppRegist
 /*
 Wrappers for HyperSnapSDK have been written and bridged to be accessed in React Native Apps. The below import statement is used to import the required Native Modules.
 */
-const {RNHyperSnapSDK, RNHVDocsCapture, RNHVFaceCapture, RNHyperSnapParams} = NativeModules;
+ 
+const {RNHyperSnapSDK, RNHVDocsCapture, RNHVQRScanCapture, RNHVFaceCapture,   RNHyperSnapParams} = NativeModules;
+ 
 import { YellowBox } from 'react-native';
 /*
 The bellow line is used to ignore certain warnings
@@ -11,8 +13,8 @@ The bellow line is used to ignore certain warnings
 YellowBox.ignoreWarnings(['Module RCTImageLoader','Class RCTCxxModule']);
 
 //Please add the appId and appKey received from HyperVerge here.
-const appID ="";
-const appKey="";
+const appID =" ";
+const appKey=" ";
 
 
 var initSuccess=false;
@@ -25,12 +27,14 @@ class LandingPage extends Component //HomeScreen Class
           result:"",
           documentModalVisible: false,
           faceModalVisible: false,
+          QRModalVisible: false,
           liveness: RNHyperSnapParams.LivenessModeNone,
           faceOutput: "",
           docType: RNHyperSnapParams.DocumentTypeCard,
           topText: "",
           bottomText: "",
           documentOutput: "",
+          qrOutput: "",
         }
         if(Platform.OS==="android"){
           requestCameraPermission();
@@ -65,6 +69,11 @@ class LandingPage extends Component //HomeScreen Class
       /* This method is used to set the visibility of the Modal for controling the Face Capture */
       initSuccess ? this.setState({faceModalVisible: visible}) : this.showAlert();
     }
+
+    setQRModalVisible(visible){
+      /* This method is used to set the visibility of the Modal for controling the Face Capture */
+      initSuccess ? this.setState({QRModalVisible: visible}) : this.showAlert();
+    }
     printDictionary(dict,out,isSuccess){
       /* This method is used to print the results (dictonary) or errors (dictonary) after the activity call has been made */
         var result = ""
@@ -79,21 +88,29 @@ class LandingPage extends Component //HomeScreen Class
         }
         if(out=="doc"){
           this.setState({documentOutput:result});
+        } else if(out == "qr"){
+          this.setState({qrOutput:result});
         }
         else{
           this.setState({faceOutput:result})
         }
     }
+     
     hvDocs(){
       /* This method sets the document type, topText and bottomText and calls the Document capture activity*/
-      RNHVDocsCapture.setDocumentType(this.state.docType);
-
+       console.log("  HV Docs is fireddd newwww");
+     
+      
+      RNHVDocsCapture.createNewConfig();
+      // RNHVDocsCapture.setShouldShowInstructionPage(true);
+      
       if(this.state.topText.length>1 || this.state.documentOutput.length>1){
-          RNHVDocsCapture.setTopText(this.state.topText);
+        RNHVDocsCapture.setDocCaptureDescription(this.state.topText);
       }
       if(this.state.bottomText.length>1 || this.state.documentOutput.length>1){
-          RNHVDocsCapture.setBottomText(this.state.bottomText);
+        RNHVDocsCapture.setDocCaptureSubText(this.state.bottomText);
       }
+      RNHVDocsCapture.setDocCaptureTitle(" Testing title ");
 
       var closure = (error,result) => {
           if(error != null){
@@ -111,12 +128,21 @@ class LandingPage extends Component //HomeScreen Class
                 this.printDictionary(result,"doc",true); //passing error to printDictonary to print the result
           }
       }
-      RNHVDocsCapture.start(closure)
+   
+      RNHVDocsCapture.setShouldShowReviewScreen(true);  
+      RNHVDocsCapture.start(  closure)
     }
 
     hvFace(){
       /* This method sets the liveness mode and calls the Face Capture activity */
-      RNHVFaceCapture.start((error,result) => {
+      RNHVFaceCapture.createNewConfig();
+      RNHVFaceCapture.setCustomUIStrings(" "); 
+      RNHVFaceCapture.setShouldShowInstructionPage(true);
+      RNHVFaceCapture.setFaceCaptureTitle("Face react native capture");
+      RNHVFaceCapture.setShouldShowCameraSwitchButton(true);
+     
+       
+      RNHVFaceCapture.start( (error,result,headers) => {
           if(error != null ){
               this.printDictionary(error,"face",false); //passing error to printDictonary to print the error
           }
@@ -126,6 +152,20 @@ class LandingPage extends Component //HomeScreen Class
       });
 }
 
+qrScan()
+{
+  var qrClosure = (error,result) => {
+    if(error != null){
+         
+          this.printDictionary(error,"qr",false); //passing error to printDictonary to print the error
+    }
+    else{
+         
+          this.printDictionary(result,"qr",true); //passing error to printDictonary to print the result
+    }
+}
+    RNHVQRScanCapture.start(qrClosure)
+}
   updateLiveness = (choice) => {
       this.setState({liveness: choice});
    }
@@ -188,6 +228,26 @@ class LandingPage extends Component //HomeScreen Class
               </TouchableHighlight>
             </View>
             </Modal>
+
+            <Modal animationType="slide" transparent={true} visible={this.state.QRModalVisible} onRequestClose={() => null} >
+            <View style={styles.container}>
+            
+              <Button style={styles.button}
+                onPress={() => this.qrScan()}
+                title="Start QR Scanner"
+              />
+                <Text style={styles.results}>
+                {this.state.qrOutput}
+                </Text>
+                <TouchableHighlight style={styles.button}
+                onPress={() => {
+                  this.setState({qrOutput: "   "});
+                  this.setQRModalVisible(!this.state.QRModalVisible);
+                }}>
+                <Text>Go Back</Text>
+              </TouchableHighlight>
+            </View>
+            </Modal>
             <Text style={styles.intro}>This is a demo application developed using the react native wrappers of HyperSnapSDK </Text>
               <View style={styles.subcontainer}><Button
                 style={styles.button}
@@ -198,7 +258,14 @@ class LandingPage extends Component //HomeScreen Class
                 style={styles.button}
                 onPress={()=>{this.setFaceModalVisible(true);}}
                 title="Face Capture"/></View>
+
+<View style={styles.subcontainer}><Button
+                style={styles.button}
+                onPress={()=>{this.setQRModalVisible(true);}}
+                title="QR Capture"/></View>
           </View>
+
+
         );
       }
 }
