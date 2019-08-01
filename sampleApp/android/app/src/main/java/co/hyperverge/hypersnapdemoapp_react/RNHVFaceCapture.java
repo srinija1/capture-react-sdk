@@ -145,15 +145,15 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
                     resultCallback.invoke(errorObj, null);
                 } else {
                     if (result != null) {
-                        Iterator<?> keys = result.keys();
-                        while (keys.hasNext()) {
-                            String key = (String) keys.next();
-                            try {
-                                resultsObj.putString(key, (String) result.get(key));
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
+                        resultsObj.putString("response",result.toString());
+//                        while (keys.hasNext()) {
+//                            String key = (String) keys.next();
+//                            try {
+//                                resultsObj.putString(key, result.get(key));
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
                     }
                     if (headers != null) {
                         Iterator<?> keys = headers.keys();

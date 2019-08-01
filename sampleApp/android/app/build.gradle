@@ -100,7 +100,7 @@ android {
     defaultConfig {
         applicationId "co.hyperverge.hypersnapdemoapp_react"
         minSdkVersion 19
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         ndk {
@@ -139,9 +139,11 @@ android {
 }
 
 dependencies {
-    implementation('co.hyperverge:hypersnapsdk:2.4.6.2@aar', {
+    implementation('co.hyperverge:hypersnapsdk:2.4.8@aar', {
         transitive=true
-         
+        exclude group: 'com.android.support'
+        exclude group: 'com.google.android.gms'
+
     })
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.android.support:appcompat-v7:28.0.0'
