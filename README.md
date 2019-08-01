@@ -86,12 +86,10 @@ Create React Native project and add the HyperSnapSDK's React Native module to it
 		  }
 	  }
 	  dependencies {
-	      implementation('co.hyperverge:hypersnapsdk:2.4.6.2@aar', {
+	      implementation('co.hyperverge:hypersnapsdk:2.4.8@aar', {
 	          transitive=true
 	          exclude group: 'com.android.support'
 	          exclude group: 'com.google.android.gms'
-	          exclude group: 'co.hyperverge', module: 'hypersnapsdk-instructions'
-			 exclude group: 'co.hyperverge', module: 'hypersnapsdk-qrscanner'
 	      })
 	  }
 	  ```
