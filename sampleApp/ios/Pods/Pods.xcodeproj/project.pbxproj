@@ -6,197 +6,250 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		5D85BEB207A3B8703B697A9139401678 /* HyperSnapSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AF3D4F4FCDD278234D3A623082986919 /* Build configuration list for PBXAggregateTarget "HyperSnapSDK" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = HyperSnapSDK;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		025025CC98070FEE9EA71FCB4D15838B /* Pods-HyperSnapDemoApp_React-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F796FE272E28F0BD8996562848F61456 /* Pods-HyperSnapDemoApp_React-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50FED96DC048BF79876AB8A9A5883744 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		BF192B85457340AFD205AAF376EE1D34 /* Pods-HyperSnapDemoApp_React-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12910BC82CE2B8D4970EDD1628D847D5 /* Pods-HyperSnapDemoApp_React-dummy.m */; };
+		18F23A7F333BBE0DA064D6D4ECCCF133 /* Pods-HyperSnapDemoApp_React-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 839E7F8E352E1E050D7344D9FE977CAE /* Pods-HyperSnapDemoApp_React-dummy.m */; };
+		33EE4FCBB35288C84FB875667EF9F15F /* Pods-HyperSnapDemoApp_React-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CB4022B8B36943D555C999BF4B01615 /* Pods-HyperSnapDemoApp_React-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3618EEB42CF5A0B238FBAB6F2090A80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9C6DCBFEDEA9CD04FA678992655E9806 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D85BEB207A3B8703B697A9139401678;
+			remoteInfo = HyperSnapSDK;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		12910BC82CE2B8D4970EDD1628D847D5 /* Pods-HyperSnapDemoApp_React-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HyperSnapDemoApp_React-dummy.m"; sourceTree = "<group>"; };
-		34C5631ACF6F3DD1AA69689F4B5457E7 /* Pods-HyperSnapDemoApp_React.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HyperSnapDemoApp_React.release.xcconfig"; sourceTree = "<group>"; };
-		60A9A00162ECAA45A190A78F3BA9F388 /* HyperSnapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyperSnapSDK.framework; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		70BAA93E75C0A99917269F36E924C785 /* Pods-HyperSnapDemoApp_React-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HyperSnapDemoApp_React-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ACCAADAEDC00DD8396BAE57954235FBE /* Pods-HyperSnapDemoApp_React-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HyperSnapDemoApp_React-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B6BC9407818EABB0DCDBC452FD835443 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D55FA1388FB0FA71CB5017D7069D48D8 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HyperSnapDemoApp_React.debug.xcconfig"; sourceTree = "<group>"; };
-		E527EF8E4E1796DABDF48020118D0963 /* Pods-HyperSnapDemoApp_React-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HyperSnapDemoApp_React-acknowledgements.plist"; sourceTree = "<group>"; };
-		F06AEE98A3D922FF2815A50BB5E9E6B5 /* Pods_HyperSnapDemoApp_React.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HyperSnapDemoApp_React.framework; path = "Pods-HyperSnapDemoApp_React.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6B543F1BB853147F72B7F3475FA9435 /* Pods-HyperSnapDemoApp_React.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HyperSnapDemoApp_React.modulemap"; sourceTree = "<group>"; };
-		F796FE272E28F0BD8996562848F61456 /* Pods-HyperSnapDemoApp_React-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HyperSnapDemoApp_React-umbrella.h"; sourceTree = "<group>"; };
-		F8262798FC5B15FC910AF6CB6291D4CC /* Pods-HyperSnapDemoApp_React-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HyperSnapDemoApp_React-resources.sh"; sourceTree = "<group>"; };
+		1B85096C3320C057B2100839C57EB973 /* HyperSnapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyperSnapSDK.framework; sourceTree = "<group>"; };
+		3790004D7A125988E156C0E7BB29F946 /* Pods-HyperSnapDemoApp_React-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HyperSnapDemoApp_React-acknowledgements.plist"; sourceTree = "<group>"; };
+		3CB4022B8B36943D555C999BF4B01615 /* Pods-HyperSnapDemoApp_React-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HyperSnapDemoApp_React-umbrella.h"; sourceTree = "<group>"; };
+		42428F8B20978AC483D7E62812B8A1BD /* Pods_HyperSnapDemoApp_React.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HyperSnapDemoApp_React.framework; path = "Pods-HyperSnapDemoApp_React.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C09E50EF467DEE36A60C21F663EFBB /* Pods-HyperSnapDemoApp_React-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HyperSnapDemoApp_React-Info.plist"; sourceTree = "<group>"; };
+		6F4636D1D8348C0FC2DB71EC8D4052A3 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HyperSnapDemoApp_React.debug.xcconfig"; sourceTree = "<group>"; };
+		6F541CB7030ED70A5A33897C53AE9BE1 /* HyperSnapSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HyperSnapSDK.xcconfig; sourceTree = "<group>"; };
+		839E7F8E352E1E050D7344D9FE977CAE /* Pods-HyperSnapDemoApp_React-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HyperSnapDemoApp_React-dummy.m"; sourceTree = "<group>"; };
+		9124A5B196B2E6DF062AA29804108465 /* Pods-HyperSnapDemoApp_React-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HyperSnapDemoApp_React-frameworks.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0BC4EB25B9F504FB25BABDCB57FB00B /* Pods-HyperSnapDemoApp_React-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HyperSnapDemoApp_React-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A43ABBC803165695673C1D396637F624 /* Pods-HyperSnapDemoApp_React.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HyperSnapDemoApp_React.modulemap"; sourceTree = "<group>"; };
+		AD9BEFBF5543D111F5AA96DB678DDB25 /* Pods-HyperSnapDemoApp_React.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HyperSnapDemoApp_React.release.xcconfig"; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D84F9DBBBA0C6E579FF27065A4CFD52F /* Frameworks */ = {
+		2C26E2E8CADB71BB1873ED75E3C299AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50FED96DC048BF79876AB8A9A5883744 /* Foundation.framework in Frameworks */,
+				D3618EEB42CF5A0B238FBAB6F2090A80 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A3D097BB01FC74020DACB1C1AE7342C /* Pods */ = {
+		00C60B4890FD0827DAC51F8FDECBAB00 /* HyperSnapSDK */ = {
 			isa = PBXGroup;
 			children = (
-				CB9864431B2B4EFE31ED50AC1E715355 /* HyperSnapSDK */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7CF856EEC3388513B39C01B52E7AD206 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				96EC25DE23E3EA173FDF6EFAF573146D /* Pods-HyperSnapDemoApp_React */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				7A3D097BB01FC74020DACB1C1AE7342C /* Pods */,
-				AB783332FEFB85E803A1E43D0B3FBEF1 /* Products */,
-				7CF856EEC3388513B39C01B52E7AD206 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		96EC25DE23E3EA173FDF6EFAF573146D /* Pods-HyperSnapDemoApp_React */ = {
-			isa = PBXGroup;
-			children = (
-				B6BC9407818EABB0DCDBC452FD835443 /* Info.plist */,
-				F6B543F1BB853147F72B7F3475FA9435 /* Pods-HyperSnapDemoApp_React.modulemap */,
-				ACCAADAEDC00DD8396BAE57954235FBE /* Pods-HyperSnapDemoApp_React-acknowledgements.markdown */,
-				E527EF8E4E1796DABDF48020118D0963 /* Pods-HyperSnapDemoApp_React-acknowledgements.plist */,
-				12910BC82CE2B8D4970EDD1628D847D5 /* Pods-HyperSnapDemoApp_React-dummy.m */,
-				70BAA93E75C0A99917269F36E924C785 /* Pods-HyperSnapDemoApp_React-frameworks.sh */,
-				F8262798FC5B15FC910AF6CB6291D4CC /* Pods-HyperSnapDemoApp_React-resources.sh */,
-				F796FE272E28F0BD8996562848F61456 /* Pods-HyperSnapDemoApp_React-umbrella.h */,
-				D55FA1388FB0FA71CB5017D7069D48D8 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */,
-				34C5631ACF6F3DD1AA69689F4B5457E7 /* Pods-HyperSnapDemoApp_React.release.xcconfig */,
-			);
-			name = "Pods-HyperSnapDemoApp_React";
-			path = "Target Support Files/Pods-HyperSnapDemoApp_React";
-			sourceTree = "<group>";
-		};
-		AB783332FEFB85E803A1E43D0B3FBEF1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F06AEE98A3D922FF2815A50BB5E9E6B5 /* Pods_HyperSnapDemoApp_React.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CB9864431B2B4EFE31ED50AC1E715355 /* HyperSnapSDK */ = {
-			isa = PBXGroup;
-			children = (
-				E701E5912ACCF960530398C92B7FF9F6 /* Frameworks */,
+				972CD1B5B4CFC50062C2EA5B26DDEA66 /* Frameworks */,
+				E28DAAFC80321259BCA54B217BDFA286 /* Support Files */,
 			);
 			name = HyperSnapSDK;
 			path = HyperSnapSDK;
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		53F70787E227701F0F8E8711706F30BF /* Pods-HyperSnapDemoApp_React */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				A43ABBC803165695673C1D396637F624 /* Pods-HyperSnapDemoApp_React.modulemap */,
+				A0BC4EB25B9F504FB25BABDCB57FB00B /* Pods-HyperSnapDemoApp_React-acknowledgements.markdown */,
+				3790004D7A125988E156C0E7BB29F946 /* Pods-HyperSnapDemoApp_React-acknowledgements.plist */,
+				839E7F8E352E1E050D7344D9FE977CAE /* Pods-HyperSnapDemoApp_React-dummy.m */,
+				9124A5B196B2E6DF062AA29804108465 /* Pods-HyperSnapDemoApp_React-frameworks.sh */,
+				52C09E50EF467DEE36A60C21F663EFBB /* Pods-HyperSnapDemoApp_React-Info.plist */,
+				3CB4022B8B36943D555C999BF4B01615 /* Pods-HyperSnapDemoApp_React-umbrella.h */,
+				6F4636D1D8348C0FC2DB71EC8D4052A3 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */,
+				AD9BEFBF5543D111F5AA96DB678DDB25 /* Pods-HyperSnapDemoApp_React.release.xcconfig */,
+			);
+			name = "Pods-HyperSnapDemoApp_React";
+			path = "Target Support Files/Pods-HyperSnapDemoApp_React";
+			sourceTree = "<group>";
+		};
+		73E7F21F8635DD624E8BBDB6A19C2DDF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00C60B4890FD0827DAC51F8FDECBAB00 /* HyperSnapSDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E035F9A092A7DE3ADB2316727BD176F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42428F8B20978AC483D7E62812B8A1BD /* Pods_HyperSnapDemoApp_React.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		972CD1B5B4CFC50062C2EA5B26DDEA66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B85096C3320C057B2100839C57EB973 /* HyperSnapSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		E701E5912ACCF960530398C92B7FF9F6 /* Frameworks */ = {
+		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				60A9A00162ECAA45A190A78F3BA9F388 /* HyperSnapSDK.framework */,
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				73E7F21F8635DD624E8BBDB6A19C2DDF /* Pods */,
+				8E035F9A092A7DE3ADB2316727BD176F /* Products */,
+				F3E70BEAFF43F867883FC1ED6B452078 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E28DAAFC80321259BCA54B217BDFA286 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F541CB7030ED70A5A33897C53AE9BE1 /* HyperSnapSDK.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HyperSnapSDK";
+			sourceTree = "<group>";
+		};
+		F3E70BEAFF43F867883FC1ED6B452078 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				53F70787E227701F0F8E8711706F30BF /* Pods-HyperSnapDemoApp_React */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		21AA638E45FB14719819993AFD55D016 /* Headers */ = {
+		05164C934A2563A97115C46EB96E0BBF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025025CC98070FEE9EA71FCB4D15838B /* Pods-HyperSnapDemoApp_React-umbrella.h in Headers */,
+				33EE4FCBB35288C84FB875667EF9F15F /* Pods-HyperSnapDemoApp_React-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A70AF8484708B8B8B81745551FC1F6B0 /* Pods-HyperSnapDemoApp_React */ = {
+		9C26965EB03167FEEE19DC6106B2C4BA /* Pods-HyperSnapDemoApp_React */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4C8AF3628EB249E3B2A47D93ECACEB3 /* Build configuration list for PBXNativeTarget "Pods-HyperSnapDemoApp_React" */;
+			buildConfigurationList = BFB62D9BB47591DB0DD39D3DBC06127D /* Build configuration list for PBXNativeTarget "Pods-HyperSnapDemoApp_React" */;
 			buildPhases = (
-				B3D9E86772BB9844AF04EDBEBACB2DFB /* Sources */,
-				D84F9DBBBA0C6E579FF27065A4CFD52F /* Frameworks */,
-				21AA638E45FB14719819993AFD55D016 /* Headers */,
+				05164C934A2563A97115C46EB96E0BBF /* Headers */,
+				8543AF8FDB399E7D2ECC6890E73ABDE3 /* Sources */,
+				2C26E2E8CADB71BB1873ED75E3C299AA /* Frameworks */,
+				866DD8EEDBA22865B099E2A9DB400D6E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				63FCC0E8F3419F3638331FFD38235B20 /* PBXTargetDependency */,
 			);
 			name = "Pods-HyperSnapDemoApp_React";
 			productName = "Pods-HyperSnapDemoApp_React";
-			productReference = F06AEE98A3D922FF2815A50BB5E9E6B5 /* Pods_HyperSnapDemoApp_React.framework */;
+			productReference = 42428F8B20978AC483D7E62812B8A1BD /* Pods_HyperSnapDemoApp_React.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = AB783332FEFB85E803A1E43D0B3FBEF1 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 8E035F9A092A7DE3ADB2316727BD176F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A70AF8484708B8B8B81745551FC1F6B0 /* Pods-HyperSnapDemoApp_React */,
+				5D85BEB207A3B8703B697A9139401678 /* HyperSnapSDK */,
+				9C26965EB03167FEEE19DC6106B2C4BA /* Pods-HyperSnapDemoApp_React */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		866DD8EEDBA22865B099E2A9DB400D6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		B3D9E86772BB9844AF04EDBEBACB2DFB /* Sources */ = {
+		8543AF8FDB399E7D2ECC6890E73ABDE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF192B85457340AFD205AAF376EE1D34 /* Pods-HyperSnapDemoApp_React-dummy.m in Sources */,
+				18F23A7F333BBE0DA064D6D4ECCCF133 /* Pods-HyperSnapDemoApp_React-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		63FCC0E8F3419F3638331FFD38235B20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HyperSnapSDK;
+			target = 5D85BEB207A3B8703B697A9139401678 /* HyperSnapSDK */;
+			targetProxy = 9C6DCBFEDEA9CD04FA678992655E9806 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
+		07488D4657FB0A78086563621D425F8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -228,8 +281,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -250,51 +301,35 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		4E89F429F7ED649A26D5AEEF431689AC /* Debug */ = {
+		5AF016ED0878CF6150242DB966889DD9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D55FA1388FB0FA71CB5017D7069D48D8 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */;
+			baseConfigurationReference = 6F541CB7030ED70A5A33897C53AE9BE1 /* HyperSnapSDK.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Pods-HyperSnapDemoApp_React.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		DD2EE122BE57017C8107FFE5C6A983E1 /* Release */ = {
+		8CEAFE126D97A34CA20F785A94BBCCCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34C5631ACF6F3DD1AA69689F4B5457E7 /* Pods-HyperSnapDemoApp_React.release.xcconfig */;
+			baseConfigurationReference = AD9BEFBF5543D111F5AA96DB678DDB25 /* Pods-HyperSnapDemoApp_React.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -306,7 +341,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Pods-HyperSnapDemoApp_React-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -326,7 +361,40 @@
 			};
 			name = Release;
 		};
-		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
+		9CE886790D72466E888235C8E190B02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F4636D1D8348C0FC2DB71EC8D4052A3 /* Pods-HyperSnapDemoApp_React.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Pods-HyperSnapDemoApp_React-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HyperSnapDemoApp_React/Pods-HyperSnapDemoApp_React.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A1962E6FF39BBAC201A2E5DDF99557DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -358,8 +426,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -378,34 +444,60 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
+		FBE95789332ECB511C3DBF210A3D57F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F541CB7030ED70A5A33897C53AE9BE1 /* HyperSnapSDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
-				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
+				07488D4657FB0A78086563621D425F8A /* Debug */,
+				A1962E6FF39BBAC201A2E5DDF99557DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4C8AF3628EB249E3B2A47D93ECACEB3 /* Build configuration list for PBXNativeTarget "Pods-HyperSnapDemoApp_React" */ = {
+		AF3D4F4FCDD278234D3A623082986919 /* Build configuration list for PBXAggregateTarget "HyperSnapSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E89F429F7ED649A26D5AEEF431689AC /* Debug */,
-				DD2EE122BE57017C8107FFE5C6A983E1 /* Release */,
+				FBE95789332ECB511C3DBF210A3D57F1 /* Debug */,
+				5AF016ED0878CF6150242DB966889DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFB62D9BB47591DB0DD39D3DBC06127D /* Build configuration list for PBXNativeTarget "Pods-HyperSnapDemoApp_React" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CE886790D72466E888235C8E190B02F /* Debug */,
+				8CEAFE126D97A34CA20F785A94BBCCCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

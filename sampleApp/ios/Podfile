@@ -7,8 +7,7 @@ target 'HyperSnapDemoApp_React' do
 
   # Pods for HyperSnapDemoApp_React
 
-	pod 'HyperSnapSDK'
-
+  pod 'HyperSnapSDK', :git => 'https://github.com/hyperverge/capture-ios-sdk.git', :tag => '2.4.1'
 
 end
 

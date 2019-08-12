@@ -1,16 +1,22 @@
 PODS:
-  - HyperSnapSDK (2.1.2)
+  - HyperSnapSDK (2.4.1)
 
 DEPENDENCIES:
-  - HyperSnapSDK
+  - HyperSnapSDK (from `https://github.com/hyperverge/capture-ios-sdk.git`, tag `2.4.1`)
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - HyperSnapSDK
+EXTERNAL SOURCES:
+  HyperSnapSDK:
+    :git: https://github.com/hyperverge/capture-ios-sdk.git
+    :tag: 2.4.1
+
+CHECKOUT OPTIONS:
+  HyperSnapSDK:
+    :git: https://github.com/hyperverge/capture-ios-sdk.git
+    :tag: 2.4.1
 
 SPEC CHECKSUMS:
-  HyperSnapSDK: 31b2b4bbdfab1d8e737c954355177e9b7d8d5bbb
+  HyperSnapSDK: 861856553fce1b062f477b795bddf9d5e85dbc5e
 
-PODFILE CHECKSUM: 138c87ac507f9811ca830d29f20035123418e037
+PODFILE CHECKSUM: 7ae59afcbca315fbadb1706a29331c1542a0efe4
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

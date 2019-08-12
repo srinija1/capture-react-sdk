@@ -13,56 +13,62 @@
 
 RCT_EXPORT_MODULE()
 
-NSString* toptext;
-NSString* bottomtext;
-DocumentType documenttype = DocumentTypeCard;
-Boolean shouldShowInstructionPage;
-Boolean shouldShowReviewPage;
-double aspectratio;
+BOOL shouldShowInstructionPage = false;
+HVDocConfig * hvDocConfig;
 
-RCT_EXPORT_METHOD(setTopText:(NSString *)topText){
-  toptext = topText;
+HVDocConfig* getDocConfig(){
+  if (hvDocConfig == NULL){
+    hvDocConfig = [[HVDocConfig alloc] init];
+  }
+  return hvDocConfig;
 }
 
-RCT_EXPORT_METHOD(setBottomText:(NSString *)bottomText){
-  bottomtext = bottomText;
+RCT_EXPORT_METHOD(setDocCaptureTitle:(NSString *)titleText){
+  [getDocConfig() setDocCaptureTitle:titleText];
+}
+
+RCT_EXPORT_METHOD(setDocCaptureDescription:(NSString *)description){
+  [getDocConfig() setDocCaptureDescription:description];
+}
+
+RCT_EXPORT_METHOD(setDocCaptureSubText:(NSString *)subText){
+  [getDocConfig() setDocCaptureSubText:subText];
+}
+
+RCT_EXPORT_METHOD(setDocReviewTitle:(NSString *)docReviewTitle){
+  [getDocConfig() setDocReviewTitle:docReviewTitle];
+}
+
+RCT_EXPORT_METHOD(setDocReviewDescription:(NSString *)docReviewDescription){
+  [getDocConfig() setDocReviewDescription:docReviewDescription];
 }
 
 RCT_EXPORT_METHOD(setAspectRatio:(double)aspectRatio){
-  aspectratio = aspectRatio;
+  [getDocConfig() setAspectRatio:aspectRatio];
 }
 
 RCT_EXPORT_METHOD(setDocumentType:(DocumentType)documentType){
-  documenttype = documentType;
+  [getDocConfig() setDocumentType:documentType];
 }
 
-RCT_EXPORT_METHOD(setShouldShowInstructionsPage:(Boolean)shouldShow){
+RCT_EXPORT_METHOD(setShouldAddPadding:(DocumentType)shouldAdd){
+  [getDocConfig() setShouldAddPadding:shouldAdd];
+}
+
+RCT_EXPORT_METHOD(setShouldShowInstructionsPage:(BOOL)shouldShow){
+  [getDocConfig() setShouldShowInstructionsPage:shouldShow];
   shouldShowInstructionPage = shouldShow;
 }
-RCT_EXPORT_METHOD(setShouldShowReviewPage:(Boolean)shouldShow){
-  shouldShowReviewPage = shouldShow;
+RCT_EXPORT_METHOD(setShouldShowReviewScreen:(BOOL)shouldShow){
+  [getDocConfig() setShouldShowReviewPage:shouldShow];
 }
 
 RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
   
-  HVDocConfig * hvDocConfig = [[HVDocConfig alloc] init];
-  [hvDocConfig setDocumentType:documenttype];
-  if (aspectratio){
-  [hvDocConfig setAspectRatio:aspectratio];
-  }
-  if (toptext){
-  [hvDocConfig setDocCaptureTitle:toptext];
-  }
-  if (bottomtext){
-  [hvDocConfig setDocCaptureDescription:bottomtext];
-  }
-  [hvDocConfig setShouldShowInstructionsPage:shouldShowInstructionPage];
-  [hvDocConfig setShouldShowReviewPage:shouldShowReviewPage];
+  HVDocConfig * hvDocConfig = getDocConfig();
   
   AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
   
-  NSBundle *bundle  = [NSBundle bundleForClass:[HyperSnapSDK self]];
-
   
   UIViewController * topVC = delegate.window.rootViewController;
   UIViewController * presented = topVC.presentedViewController;
@@ -70,12 +76,14 @@ RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
     topVC = presented;
   }
   
-  [HVDocsViewController start:presented hvDocConfig:hvDocConfig completionHandler:^(NSError* error,NSDictionary<NSString *,id> * _Nonnull result, UIViewController* vcNew){
+  [HVDocsViewController start:presented hvDocConfig:hvDocConfig completionHandler:^(HVError* error,NSDictionary<NSString *,id> * _Nonnull result, UIViewController* vcNew){
     if(error != nil){
       NSMutableDictionary *errorDict = [[NSMutableDictionary alloc] init];
-      NSNumber *errorCode = [NSNumber numberWithInteger:error.code];
+      NSNumber *errorCode = [NSNumber numberWithInteger:error.getErrorCode];
+      NSString *errorMessage = [NSString stringWithString:error.getErrorMessage];
+
       [errorDict setValue: errorCode forKey: @"errorCode"];
-      [errorDict setValue: error.debugDescription forKey: @"errorMessage"];
+      [errorDict setValue: errorMessage forKey: @"errorMessage"];
       if (result == nil) {
         completionHandler(@[errorDict, [NSNull null]]);
       }else{

@@ -21,7 +21,6 @@ RCT_EXPORT_MODULE()
             @"ProductIAM" : @(ProductIAM),
             @"LivenessModeNone" : @(LivenessModeNone),
             @"LivenessModeTextureLiveness" : @(LivenessModeTextureLiveness),
-            @"LivenessModeTextureAndGestureLiveness" : @(LivenessModeTextureAndGestureLiveness),
             @"DocumentTypeCard" : @(DocumentTypeCard),
             @"DocumentTypeA4" : @(DocumentTypeA4),
             @"DocumentTypePassport" : @(DocumentTypePassport),
@@ -60,7 +59,6 @@ RCT_ENUM_CONVERTER(Product, (@{ @"ProductFaceID" : @(ProductFaceID),
 @implementation RCTConvert(LivenessMode)
 RCT_ENUM_CONVERTER(LivenessMode, (@{ @"LivenessModeNone" : @(LivenessModeNone),
                                @"LivenessModeTextureLiveness" : @(LivenessModeTextureLiveness),
-                               @"LivenessModeTextureAndGestureLiveness" : @(LivenessModeTextureAndGestureLiveness),
                                }),
                    LivenessModeTextureLiveness, integerValue)
 @end

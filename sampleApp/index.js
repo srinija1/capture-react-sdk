@@ -3,9 +3,9 @@ import { PermissionsAndroid, Alert, TouchableHighlight, Modal,Platform,AppRegist
 /*
 Wrappers for HyperSnapSDK have been written and bridged to be accessed in React Native Apps. The below import statement is used to import the required Native Modules.
 */
- 
+
 const {RNHyperSnapSDK, RNHVDocsCapture, RNHVQRScanCapture, RNHVFaceCapture,   RNHyperSnapParams} = NativeModules;
- 
+
 import { YellowBox } from 'react-native';
 /*
 The bellow line is used to ignore certain warnings
@@ -13,8 +13,8 @@ The bellow line is used to ignore certain warnings
 YellowBox.ignoreWarnings(['Module RCTImageLoader','Class RCTCxxModule']);
 
 //Please add the appId and appKey received from HyperVerge here.
-const appID =" ";
-const appKey=" ";
+const appID ="";
+const appKey="";
 
 
 var initSuccess=false;
@@ -95,22 +95,20 @@ class LandingPage extends Component //HomeScreen Class
           this.setState({faceOutput:result})
         }
     }
-     
+
     hvDocs(){
       /* This method sets the document type, topText and bottomText and calls the Document capture activity*/
-       console.log("  HV Docs is fireddd newwww");
-     
-      
-      RNHVDocsCapture.createNewConfig();
+       console.log("  HV Docs is fired");
+
+
       // RNHVDocsCapture.setShouldShowInstructionPage(true);
-      
+
       if(this.state.topText.length>1 || this.state.documentOutput.length>1){
-        RNHVDocsCapture.setDocCaptureDescription(this.state.topText);
+        RNHVDocsCapture.setDocCaptureTitle(this.state.topText);
       }
       if(this.state.bottomText.length>1 || this.state.documentOutput.length>1){
-        RNHVDocsCapture.setDocCaptureSubText(this.state.bottomText);
+        RNHVDocsCapture.setDocCaptureDescription(this.state.bottomText);
       }
-      RNHVDocsCapture.setDocCaptureTitle(" Testing title ");
 
       var closure = (error,result) => {
           if(error != null){
@@ -128,20 +126,17 @@ class LandingPage extends Component //HomeScreen Class
                 this.printDictionary(result,"doc",true); //passing error to printDictonary to print the result
           }
       }
-   
-      RNHVDocsCapture.setShouldShowReviewScreen(true);  
-      RNHVDocsCapture.start(  closure)
+
+      RNHVDocsCapture.setShouldShowReviewScreen(true);
+      RNHVDocsCapture.setDocumentType(this.state.docType);
+      RNHVDocsCapture.start(closure)
     }
 
     hvFace(){
       /* This method sets the liveness mode and calls the Face Capture activity */
-      RNHVFaceCapture.createNewConfig();
-      RNHVFaceCapture.setCustomUIStrings(" "); 
       RNHVFaceCapture.setShouldShowInstructionPage(true);
-      RNHVFaceCapture.setFaceCaptureTitle("Face react native capture");
-      RNHVFaceCapture.setShouldShowCameraSwitchButton(true);
-     
-       
+
+
       RNHVFaceCapture.start( (error,result,headers) => {
           if(error != null ){
               this.printDictionary(error,"face",false); //passing error to printDictonary to print the error
@@ -156,11 +151,11 @@ qrScan()
 {
   var qrClosure = (error,result) => {
     if(error != null){
-         
+
           this.printDictionary(error,"qr",false); //passing error to printDictonary to print the error
     }
     else{
-         
+
           this.printDictionary(result,"qr",true); //passing error to printDictonary to print the result
     }
 }
@@ -210,7 +205,6 @@ qrScan()
             <Picker style={styles.inputstyle} selectedValue = {this.state.liveness} onValueChange = {this.updateLiveness}>
                 <Picker.Item label="None" value={RNHyperSnapParams.LivenessModeNone} />
                 <Picker.Item label="Texture Liveness" value={RNHyperSnapParams.LivenessModeTextureLiveness} />
-                <Picker.Item label="Texture and Gesture Liveness" value={RNHyperSnapParams.LivenessModeTextureAndGestureLiveness} />
             </Picker>
               <Button style={styles.button}
                 onPress={() => this.hvFace()}
@@ -231,7 +225,7 @@ qrScan()
 
             <Modal animationType="slide" transparent={true} visible={this.state.QRModalVisible} onRequestClose={() => null} >
             <View style={styles.container}>
-            
+
               <Button style={styles.button}
                 onPress={() => this.qrScan()}
                 title="Start QR Scanner"

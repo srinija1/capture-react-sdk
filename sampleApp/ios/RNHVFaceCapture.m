@@ -13,34 +13,51 @@
 
 RCT_EXPORT_MODULE()
 
-LivenessMode livenessMode = LivenessModeTextureLiveness;
-BOOL shouldUseBackCamera = false;
-BOOL shouldShowCameraSwitchButton = false;
-  BOOL setShouldReturnFullImageUri = false;
+HVFaceConfig * hvFaceConfig;
+
+HVFaceConfig* getFaceConfig(){
+  if (hvFaceConfig == NULL){
+    hvFaceConfig = [[HVFaceConfig alloc] init];
+  }
+  return hvFaceConfig;
+}
 
 RCT_EXPORT_METHOD(setLivenessMode:(LivenessMode)mode){
-  livenessMode = mode;
+  [getFaceConfig() setLivenessMode:mode];
 }
 
-RCT_EXPORT_METHOD(setShouldUseBackCamera:(BOOL)shouldUse){
-  shouldUseBackCamera = shouldUse;
-}
-
-RCT_EXPORT_METHOD(setShouldShowCameraSwitchButton:(BOOL)shouldShow){
-  shouldShowCameraSwitchButton = shouldShow;
+RCT_EXPORT_METHOD(setShouldShowInstructionPage:(BOOL)shouldShow){
+  [getFaceConfig() setShouldShowInstructionsPage:shouldShow];
 }
 
 RCT_EXPORT_METHOD(setShouldReturnFullImageUri:(BOOL)shouldReturn){
-   setShouldReturnFullImageUri = shouldReturn;
+  [getFaceConfig() setShouldReturnFullImageUri:shouldReturn];
 }
+
+RCT_EXPORT_METHOD(setLivenessAPIParameters:(NSDictionary<NSString *,id> * _Nullable)parameters){
+  [getFaceConfig() setLivenessAPIParameters:parameters];
+}
+
+RCT_EXPORT_METHOD(setLivenessAPIHeaders:(NSDictionary<NSString *,NSString *> * _Nullable)headers){
+  [getFaceConfig() setLivenessAPIHeaders:headers];
+}
+
+RCT_EXPORT_METHOD(setLivenessEndpoint:(NSString *)endpoint){
+  [getFaceConfig() setLivenessEndpoint:endpoint];
+}
+
+RCT_EXPORT_METHOD(setShouldUseBackCamera:(BOOL)shouldUse){
+  [getFaceConfig() setShouldUseBackCamera:shouldUse];
+}
+
+RCT_EXPORT_METHOD(setShouldShowCameraSwitchButton:(BOOL)shouldShow){
+  [getFaceConfig() setShouldShowCameraSwitchButton:shouldShow];
+}
+
 
 RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
 
-  HVFaceConfig * hvFaceConfig = [[HVFaceConfig alloc] init];
-  [hvFaceConfig setLivenessMode:livenessMode];
-  [hvFaceConfig setShouldUseBackCamera:shouldUseBackCamera];
-  [hvFaceConfig setShouldShowCameraSwitchButton:shouldShowCameraSwitchButton];
-  [hvFaceConfig setShouldReturnFullImageUri:setShouldReturnFullImageUri];
+  HVFaceConfig * hvFaceConfig = getFaceConfig();
 
   AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
@@ -50,12 +67,14 @@ RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
     topVC = presented;
   }
 
-  [HVFaceViewController start:presented hvFaceConfig:hvFaceConfig completionHandler:^(NSError* error,NSDictionary<NSString *,id> * _Nonnull result, UIViewController* vcNew){
+  [HVFaceViewController start:presented hvFaceConfig:hvFaceConfig completionHandler: ^( HVError* _Nullable error,NSDictionary<NSString *,id> * _Nullable result, NSDictionary<NSString *,id> * _Nullable headers, UIViewController* vcNew){
+    
     if(error != nil){
       NSMutableDictionary *errorDict = [[NSMutableDictionary alloc] init];
-      NSNumber *errorCode = [NSNumber numberWithInteger:error.code];
+      NSNumber *errorCode = [NSNumber numberWithInteger:error.getErrorCode];
+      NSString *errorMessage = [NSString stringWithString:error.getErrorMessage];
       [errorDict setValue: errorCode forKey: @"errorCode"];
-      [errorDict setValue: error.debugDescription forKey: @"errorMessage"];
+      [errorDict setValue: errorMessage forKey: @"errorMessage"];
       if (result == nil) {
         completionHandler(@[errorDict, [NSNull null]]);
       }else{
