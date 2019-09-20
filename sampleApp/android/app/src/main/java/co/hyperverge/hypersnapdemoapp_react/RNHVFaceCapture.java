@@ -32,25 +32,28 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
     public String getName() {
         return "RNHVFaceCapture";
     }
-    @ReactMethod
-    public void setLivenessEndpoint(String livenessEndpoint) {
-        this.faceConfig.setLivenessEndpoint(livenessEndpoint);
-    }
 
     @ReactMethod
-    public void createNewConfig() {
-        this.faceConfig = new HVFaceConfig();
+    public void setLivenessEndpoint(String livenessEndpoint) {
+        getFaceConfig().setLivenessEndpoint(livenessEndpoint);
+    }
+
+    public HVFaceConfig getFaceConfig() {
+        if(this.faceConfig == null) {
+            this.faceConfig = new HVFaceConfig();
+        }
+        return this.faceConfig;
 
     }
 
     @ReactMethod
     public void setShouldReturnFullImageUrl(Boolean shouldReturnFullImageUrl) {
-        this.faceConfig.setShouldReturnFullImageUrl(shouldReturnFullImageUrl.booleanValue());
+        getFaceConfig().setShouldReturnFullImageUrl(shouldReturnFullImageUrl.booleanValue());
     }
 
     @ReactMethod
     public void setClientID(String clientID) {
-        this.faceConfig.setClientID(clientID);
+        getFaceConfig().setClientID(clientID);
 
     }
 
@@ -60,7 +63,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
             JSONObject stringObj = new JSONObject();
             if( customStrings == null && !customStrings.trim().isEmpty() )
                 stringObj = new JSONObject(customStrings);
-            this.faceConfig.setCustomUIStrings(stringObj);
+            getFaceConfig().setCustomUIStrings(stringObj);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -68,13 +71,13 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setShouldShowCameraSwitchButton(Boolean shouldShow) {
-        this.faceConfig.setShouldShowCameraSwitchButton(shouldShow.booleanValue());
+        getFaceConfig().setShouldShowCameraSwitchButton(shouldShow.booleanValue());
     }
 
 
     @ReactMethod
     public void setShouldShowInstructionPage(Boolean shouldShowInstructionPage) {
-         this.faceConfig.setShouldShowInstructionPage(shouldShowInstructionPage.booleanValue());
+        getFaceConfig().setShouldShowInstructionPage(shouldShowInstructionPage.booleanValue());
     }
 
 
@@ -83,7 +86,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
         try {
             liveness = livenessValue.split("\\.")[1];
             HVFaceConfig.LivenessMode livenessMode = HVFaceConfig.LivenessMode.valueOf(liveness);
-            faceConfig.setLivenessMode(livenessMode);
+            getFaceConfig().setLivenessMode(livenessMode);
         } catch (Exception exp) {
             exp.printStackTrace();
         }
@@ -91,28 +94,34 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setFaceCaptureTitle(String faceCaptureTitle) {
-         this.faceConfig.setFaceCaptureTitle(faceCaptureTitle);
+        getFaceConfig().setFaceCaptureTitle(faceCaptureTitle);
     }
 
     @ReactMethod
     public void setShouldUseBackCamera(Boolean shouldUseBackCamera) {
-        this.faceConfig.setShouldUseBackCamera(shouldUseBackCamera.booleanValue());
+        getFaceConfig().setShouldUseBackCamera(shouldUseBackCamera.booleanValue());
     }
 
     @ReactMethod
     public void setShouldEnableDataLogging(Boolean dataLogging) {
-        this.faceConfig.setShouldEnableDataLogging(dataLogging.booleanValue());
+        getFaceConfig().setShouldEnableDataLogging(dataLogging.booleanValue());
+    }
+
+    @ReactMethod
+    public void setShouldAddPadding(Boolean shouldSetPadding) {
+        getFaceConfig().setShouldEnablePadding(shouldSetPadding.booleanValue());
+
     }
 
     @ReactMethod
     public void setPadding(Number leftPadding, Number rightPadding, Number topPadding, Number bottomPadding) {
-        this.faceConfig.setPadding((float)  (leftPadding) , (float)rightPadding, (float)topPadding, (float)bottomPadding);
+        getFaceConfig().setPadding((float)  (leftPadding) , (float)rightPadding, (float)topPadding, (float)bottomPadding);
     }
 
     @ReactMethod
     public void setLivenessAPIParameters(String params) {
         try {
-            this.faceConfig.setLivenessAPIParameters(new JSONObject( params));
+            getFaceConfig().setLivenessAPIParameters(new JSONObject(params));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -121,7 +130,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setLivenessAPIHeaders(String headers) {
         try {
-            this.faceConfig.setLivenessAPIHeaders(new JSONObject( headers));
+            getFaceConfig().setLivenessAPIHeaders(new JSONObject(headers));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -131,7 +140,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
     @ReactMethod
     public void start( final Callback resultCallback) {
 
-        HVFaceActivity.start(getCurrentActivity(), this.faceConfig, new FaceCaptureCompletionHandler() {
+        HVFaceActivity.start(getCurrentActivity(), getFaceConfig(), new FaceCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result, JSONObject headers) {
 
@@ -142,7 +151,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
                 if (error != null) {
                     errorObj.putInt("errorCode", error.getErrorCode());
                     errorObj.putString("errorMessage", error.getErrorMessage());
-                    resultCallback.invoke(errorObj, null);
+                    resultCallback.invoke(errorObj, null, null);
                 } else {
                     if (result != null) {
                         resultsObj.putString("response",result.toString());

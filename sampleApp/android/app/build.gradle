@@ -139,7 +139,7 @@ android {
 }
 
 dependencies {
-    implementation('co.hyperverge:hypersnapsdk:2.4.8@aar', {
+    implementation('co.hyperverge:hypersnapsdk:2.5.8@aar', {
         transitive=true
         exclude group: 'com.android.support'
         exclude group: 'com.google.android.gms'

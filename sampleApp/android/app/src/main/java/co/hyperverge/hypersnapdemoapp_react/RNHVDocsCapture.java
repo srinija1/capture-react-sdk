@@ -19,6 +19,7 @@ import co.hyperverge.hypersnapsdk.activities.HVDocsActivity;
 import co.hyperverge.hypersnapsdk.listeners.DocCaptureCompletionHandler;
 import co.hyperverge.hypersnapsdk.objects.HVDocConfig;
 import co.hyperverge.hypersnapsdk.objects.HVError;
+import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 
 public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
@@ -43,9 +44,12 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
         return "RNHVDocsCapture";
     }
 
-    @ReactMethod
-    public void createNewConfig() {
-        this.docConfig = new HVDocConfig();
+
+    public HVDocConfig getDocConfig() {
+        if(this.docConfig == null) {
+            this.docConfig = new HVDocConfig();
+        }
+        return this.docConfig;
 
     }
 
@@ -55,7 +59,7 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
             JSONObject stringObj = new JSONObject();
             if( customStrings == null && !customStrings.trim().isEmpty() )
                 stringObj = new JSONObject(customStrings);
-            this.docConfig.setCustomUIStrings(stringObj);
+            getDocConfig().setCustomUIStrings(stringObj);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -68,48 +72,47 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setShouldAddPadding(Boolean shouldSetPadding) {
-        this.docConfig.setShouldAddPadding(shouldSetPadding.booleanValue());
+        getDocConfig().setShouldAddPadding(shouldSetPadding.booleanValue());
 
     }
 
     @ReactMethod
     public void setPadding(Number padding) {
-        this.docConfig.setPadding((float) padding);
+        getDocConfig().setPadding((float) padding);
 
     }
 
 
     @ReactMethod
     public void setShouldShowFlashIcon(Boolean shouldShowFlashIcon) {
-        this.docConfig.setShouldShowFlashIcon(shouldShowFlashIcon.booleanValue());
+        getDocConfig().setShouldShowFlashIcon(shouldShowFlashIcon.booleanValue());
     }
 
     @ReactMethod
     public void setShouldShowReviewScreen(Boolean shouldShowReviewScreen) {
-        this.docConfig.setShouldShowReviewScreen(shouldShowReviewScreen.booleanValue());
+        getDocConfig().setShouldShowReviewScreen(shouldShowReviewScreen.booleanValue());
     }
 
     @ReactMethod
     public void setDocCaptureSubText(String subText) {
-        this.docConfig.setDocCaptureSubText(subText);
+        getDocConfig().setDocCaptureSubText(subText);
     }
 
     @ReactMethod
     public void setDocCaptureDescription(String description) {
-
-        this.docConfig.setDocCaptureDescription(description);
+        getDocConfig().setDocCaptureDescription(description);
     }
 
 
     @ReactMethod
     public void setShouldShowInstructionPage(Boolean shouldShowInstructionPage) {
-        this.docConfig.setShouldShowInstructionPage(shouldShowInstructionPage.booleanValue());
+        getDocConfig().setShouldShowInstructionPage(shouldShowInstructionPage.booleanValue());
     }
 
 
     @ReactMethod
     public HVDocConfig getConfig() {
-        return this.docConfig;
+        return getDocConfig();
     }
 
 
@@ -121,12 +124,11 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
                 this.docType = "Card";
             }
 
-
             this.doc = HVDocConfig.Document.valueOf(docType);
             if (aspectRatio != null)
                 this.doc.setAspectRatio(this.aspectRatio);
 
-            this.docConfig.setDocumentType(this.doc);
+            getDocConfig().setDocumentType(this.doc);
         } catch (Exception exp) {
             exp.printStackTrace();
         }
@@ -135,19 +137,19 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setDocCaptureTitle(String titleText) {
-        this.docConfig.setDocCaptureTitle(titleText);
+        getDocConfig().setDocCaptureTitle(titleText);
     }
 
 
     @ReactMethod
     public void setDocReviewTitle(String docReviewTitle) {
 
-        this.docConfig.setDocReviewTitle(docReviewTitle);
+        getDocConfig().setDocReviewTitle(docReviewTitle);
     }
 
     @ReactMethod
     public void setDocReviewDescription(String docReviewDescription) {
-        this.docConfig.setDocReviewDescription(docReviewDescription);
+        getDocConfig().setDocReviewDescription(docReviewDescription);
 
     }
 
@@ -155,7 +157,7 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
     @ReactMethod
     public void start(final Callback resultCallback) {
  
-        HVDocsActivity.start(getCurrentActivity(), this.docConfig, new DocCaptureCompletionHandler() {
+        HVDocsActivity.start(getCurrentActivity(), getDocConfig(), new DocCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result) {
                 WritableMap errorObj = Arguments.createMap();
