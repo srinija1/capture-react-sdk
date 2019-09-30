@@ -54,6 +54,36 @@ RCT_EXPORT_METHOD(setShouldShowCameraSwitchButton:(BOOL)shouldShow){
   [getFaceConfig() setShouldShowCameraSwitchButton:shouldShow];
 }
 
+// Assumes input like "#00FF00" (#RRGGBB).
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+RCT_EXPORT_METHOD(setFaceCaptureCircleSuccessColor:(NSString *)color){
+  UIColor * uiColor = [self colorFromHexString:color];
+  [getFaceConfig() setFaceCaptureCircleSuccessColor:uiColor];
+}
+
+RCT_EXPORT_METHOD(setFaceCaptureCircleFailureColor:(NSString *)color){
+    UIColor * uiColor = [self colorFromHexString:color];
+  [getFaceConfig() setFaceCaptureCircleFailureColor:uiColor];
+}
+
+RCT_EXPORT_METHOD(setShouldEnablePadding:(BOOL)shouldEnable){
+  [getFaceConfig() setShouldEnablePadding:shouldEnable];
+}
+
+RCT_EXPORT_METHOD(setPadding:(float)left right:(float)right top:(float)top bottom:(float)bottom){
+  [getFaceConfig() setPaddingWithLeft:left right:right top:top bottom:bottom];
+}
+
+
+
+
 
 RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
 
