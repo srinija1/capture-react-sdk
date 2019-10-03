@@ -89,15 +89,10 @@ RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
 
   HVFaceConfig * hvFaceConfig = getFaceConfig();
 
-  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  UIViewController *root = RCTPresentedViewController();
 
-  UIViewController * topVC = delegate.window.rootViewController;
-  UIViewController * presented = topVC.presentedViewController;
-  if (presented != nil) {
-    topVC = presented;
-  }
 
-  [HVFaceViewController start:presented hvFaceConfig:hvFaceConfig completionHandler: ^( HVError* _Nullable error,NSDictionary<NSString *,id> * _Nullable result, NSDictionary<NSString *,id> * _Nullable headers, UIViewController* vcNew){
+  [HVFaceViewController start:root hvFaceConfig:hvFaceConfig completionHandler: ^( HVError* _Nullable error,NSDictionary<NSString *,id> * _Nullable result, NSDictionary<NSString *,id> * _Nullable headers, UIViewController* vcNew){
     
     if(error != nil){
       NSMutableDictionary *errorDict = [[NSMutableDictionary alloc] init];

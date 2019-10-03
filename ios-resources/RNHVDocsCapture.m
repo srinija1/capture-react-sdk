@@ -67,16 +67,10 @@ RCT_EXPORT_METHOD(start: (RCTResponseSenderBlock)completionHandler) {
   
   HVDocConfig * hvDocConfig = getDocConfig();
   
-  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  UIViewController *root = RCTPresentedViewController();
+
   
-  
-  UIViewController * topVC = delegate.window.rootViewController;
-  UIViewController * presented = topVC.presentedViewController;
-  if (presented != nil) {
-    topVC = presented;
-  }
-  
-  [HVDocsViewController start:presented hvDocConfig:hvDocConfig completionHandler:^(HVError* error,NSDictionary<NSString *,id> * _Nonnull result, UIViewController* vcNew){
+  [HVDocsViewController start:root hvDocConfig:hvDocConfig completionHandler:^(HVError* error,NSDictionary<NSString *,id> * _Nonnull result, UIViewController* vcNew){
     if(error != nil){
       NSMutableDictionary *errorDict = [[NSMutableDictionary alloc] init];
       NSNumber *errorCode = [NSNumber numberWithInteger:error.getErrorCode];
