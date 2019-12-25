@@ -37,10 +37,6 @@ RCT_EXPORT_METHOD(setShouldShowInstructionsPage:(bool)shouldShow){
 }
 
 
-RCT_EXPORT_METHOD(setShouldOptimizeLivenessCall:(bool)shouldOptimize){
-  [hvFaceConfig setShouldOptimizeLivenessCall:shouldOptimize];
-}
-
 RCT_EXPORT_METHOD(setShouldUseBackCamera:(bool)shouldUse){
   [hvFaceConfig setShouldUseBackCamera:shouldUse];
 }

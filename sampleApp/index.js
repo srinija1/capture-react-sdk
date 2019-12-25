@@ -4,7 +4,7 @@ import { PermissionsAndroid, Alert, TouchableHighlight, Modal,Platform,AppRegist
 Wrappers for HyperSnapSDK have been written and bridged to be accessed in React Native Apps. The below import statement is used to import the required Native Modules.
 */
 
-const {RNHyperSnapSDK, RNHVDocsCapture, RNHVQRScanCapture, RNHVFaceCapture,   RNHyperSnapParams} = NativeModules;
+const {RNHyperSnapSDK, RNHVDocsCapture, RNHVQRScanCapture, RNHVFaceCapture,   RNHyperSnapParams, RNHVNetworkHelper} = NativeModules;
 
 import { YellowBox } from 'react-native';
 /*
@@ -119,12 +119,63 @@ class LandingPage extends Component //HomeScreen Class
                 this.printDictionary(error,"doc",false); //passing error to printDictonary to print the error
           }
           else{
-              this.setState({
-                  topText: "  ",
-                  bottomText: "  ",
-                });
-                this.printDictionary(result,"doc",true); //passing error to printDictonary to print the result
-          }
+            this.setState({
+                topText: "  ",
+                bottomText: "  ",
+              });
+            this.printDictionary(result,"doc",true); //passing error to printDictonary to print the result
+            docImageUri = result["imageUri"]
+
+            //Uncomment next block to test OCR:
+
+            // try{
+            //   var params = {};
+            //   var headers = {};
+            //   var closure = (error,result,headers) => {
+            //     if (error != null){
+            //       console.log('error',error);
+            //       this.printDictionary(error,"doc",true);
+            //     } else {
+            //       console.log('result',result);
+            //       this.printDictionary(result,"doc",true);
+            //     }
+            //   }
+            //   RNHVNetworkHelper.makeOCRCall("https://apac.docs.hyperverge.co/v1.1/readNID",docImageUri,params,headers,closure)
+            // } catch(error){
+            //   console.log('error')
+            // }
+
+            //Uncomment next block to test Face Match:
+
+            // RNHVFaceCapture.start( (error,result,headers) => {
+            //   if(error != null ){
+            //     this.printDictionary(error,"face",false); //passing error to printDictonary to print the error
+            //   }
+            //   else{
+            //     this.printDictionary(result,"face",true); //passing error to printDictonary to print the result
+            //     faceImageUri = result["imageUri"]
+
+            //     try{
+            //       var params = {};
+            //       var headers = {};
+            //       var closure = (error,result,headers) => {
+            //         if (error != null){
+            //           console.log('error',error);
+            //           this.printDictionary(error,"face",false);
+            //         } else {
+            //           console.log('result',result);
+            //           this.printDictionary(result,"face",true);
+            //         }
+            //       }
+            //       RNHVNetworkHelper.makeFaceMatchCall("https://apac.faceid.hyperverge.co/v1/photo/verifyPair",faceImageUri,docImageUri,params,headers,closure)
+            //     } catch(error){
+            //       console.log('error')
+            //     }
+            //   }
+            // });
+
+        }  
+
       }
 
       RNHVDocsCapture.setShouldShowReviewScreen(true);
@@ -134,15 +185,31 @@ class LandingPage extends Component //HomeScreen Class
 
     hvFace(){
       /* This method sets the liveness mode and calls the Face Capture activity */
-      RNHVFaceCapture.setShouldShowInstructionPage(true);
-
 
       RNHVFaceCapture.start( (error,result,headers) => {
           if(error != null ){
-              this.printDictionary(error,"face",false); //passing error to printDictonary to print the error
+            this.printDictionary(error,"face",false); //passing error to printDictonary to print the error
           }
           else{
-              this.printDictionary(result,"face",true); //passing error to printDictonary to print the result
+            this.printDictionary(result,"face",true); //passing error to printDictonary to print the result
+            imageUri = result["imageUri"]
+
+            try{
+              var params = {};
+              var headers = {};
+              var closure = (error,result,headers) => {
+                if (error != null){
+                  console.log('error',error);
+                  this.printDictionary(error,"face",false);
+                } else {
+                  console.log('result',result);
+                  this.printDictionary(result,"face",true);
+                }
+              }
+              // RNHVNetworkHelper.makeFaceMatchCall("https://apac.faceid.hyperverge.co/v1/photo/verifyPair",imageUri,"",params,headers,closure)
+            } catch(error){
+              console.log('error')
+            }
           }
       });
 }
