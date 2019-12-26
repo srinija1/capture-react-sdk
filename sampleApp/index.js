@@ -67,7 +67,7 @@ class LandingPage extends Component //HomeScreen Class
     }
     setFaceModalVisible(visible){
       /* This method is used to set the visibility of the Modal for controling the Face Capture */
-      initSuccess ? this.setState({faceModalVisible: visible}) : this.showAlert();
+      this.setState({faceModalVisible: visible});
     }
 
     setQRModalVisible(visible){
@@ -125,7 +125,6 @@ class LandingPage extends Component //HomeScreen Class
               });
             this.printDictionary(result,"doc",true); //passing error to printDictonary to print the result
             docImageUri = result["imageUri"]
-
             //Uncomment next block to test OCR:
 
             // try{
@@ -154,7 +153,7 @@ class LandingPage extends Component //HomeScreen Class
             //   else{
             //     this.printDictionary(result,"face",true); //passing error to printDictonary to print the result
             //     faceImageUri = result["imageUri"]
-
+            //
             //     try{
             //       var params = {};
             //       var headers = {};
@@ -174,7 +173,7 @@ class LandingPage extends Component //HomeScreen Class
             //   }
             // });
 
-        }  
+        }
 
       }
 
