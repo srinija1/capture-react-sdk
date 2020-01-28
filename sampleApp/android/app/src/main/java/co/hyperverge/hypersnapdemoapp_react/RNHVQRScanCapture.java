@@ -24,6 +24,8 @@ public class RNHVQRScanCapture extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
+    boolean hasBeenCalled;
+
     @Nonnull
     @Override
     public String getName() {
@@ -31,37 +33,45 @@ public class RNHVQRScanCapture extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void start( final Callback resultCallback) {
+    public void start(final Callback resultCallback) {
+        hasBeenCalled = false
         HVQrScannerActivity.start(getCurrentActivity(), new QRScannerCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result) {
-                WritableMap errorObj = Arguments.createMap();
-                WritableMap resultsObj = Arguments.createMap();
-                if(error!=null){
-                    errorObj.putInt("errorCode",error.getErrorCode());
-                    errorObj.putString("errorMessage",error.getErrorMessage());
-                    resultCallback.invoke(errorObj,null);
-                    return;
-                }
-                else if(result != null){
-                    Iterator<?> keys=result.keys();
-                    while(keys.hasNext()){
-                        String key = (String)keys.next();
-                        try {
-                            if(result.get(key) instanceof String) {
-                                resultsObj.putString(key, (String) result.get(key));
-                            } else if(result.get(key) instanceof JSONObject){
-                                resultsObj.putString(key,  result.get(key).toString());
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                try {
+                    WritableMap errorObj = Arguments.createMap();
+                    WritableMap resultsObj = Arguments.createMap();
+                    if (error != null) {
+                        errorObj.putInt("errorCode", error.getErrorCode());
+                        errorObj.putString("errorMessage", error.getErrorMessage());
+                        if(!hasBeenCalled) {
+                            hasBeenCalled = true;
+                            resultCallback.invoke(errorObj, null);
                         }
-                    }}
-
-                    resultCallback.invoke(null,resultsObj);
-                return;
+                        return;
+                    } else if (result != null) {
+                        Iterator<?> keys = result.keys();
+                        while (keys.hasNext()) {
+                            String key = (String) keys.next();
+                            try {
+                                if (result.get(key) instanceof String) {
+                                    resultsObj.putString(key, (String) result.get(key));
+                                } else if (result.get(key) instanceof JSONObject) {
+                                    resultsObj.putString(key, result.get(key).toString());
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    if(!hasBeenCalled) {
+                        hasBeenCalled = true;
+                        resultCallback.invoke(null, resultsObj);
+                    }
+                    return;
 
                 }
+            }catch(Exception e){}
 
 
         });
