@@ -34,7 +34,7 @@ public class RNHVQRScanCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void start(final Callback resultCallback) {
-        hasBeenCalled = false
+        hasBeenCalled = false;
         HVQrScannerActivity.start(getCurrentActivity(), new QRScannerCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result) {
@@ -70,10 +70,10 @@ public class RNHVQRScanCapture extends ReactContextBaseJavaModule {
                     }
                     return;
 
-                }
+
             }catch(Exception e){}
 
 
-        });
+        }});
     }
 }

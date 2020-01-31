@@ -191,15 +191,14 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
                             resultCallback.invoke(null, resultsObj);
                         }
                     }
+                } catch (
+                        Exception e)
+
+                {
+
                 }
-            }catch(
-            Exception e)
+            } });
 
-            {
-
-            }
-        });
+        }
 
     }
-
-}

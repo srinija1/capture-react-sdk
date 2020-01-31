@@ -181,11 +181,11 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
                         }
 
                     }
-                }
+
             }catch(Exception e){
 
             }
-        });
+        }});
 
     }
 
