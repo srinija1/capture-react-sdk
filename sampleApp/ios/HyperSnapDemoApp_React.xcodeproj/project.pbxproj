@@ -18,8 +18,6 @@
 		0478D66420E6936800BE1FD4 /* RNHyperSnapSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478D65E20E6936700BE1FD4 /* RNHyperSnapSDK.m */; };
 		0478D66520E6936800BE1FD4 /* RNHVFaceCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478D66020E6936700BE1FD4 /* RNHVFaceCapture.m */; };
 		04BAB768230001DD00F5091A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BAB767230001DC00F5091A /* JavaScriptCore.framework */; };
-		04CDAF4223B3216200BCE20E /* RNHVDocConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAF3F23B3216200BCE20E /* RNHVDocConfig.m */; };
-		04CDAF4323B3216200BCE20E /* RNHVFaceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAF4123B3216200BCE20E /* RNHVFaceConfig.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -336,10 +334,6 @@
 		0478D66020E6936700BE1FD4 /* RNHVFaceCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNHVFaceCapture.m; sourceTree = "<group>"; };
 		0478D66120E6936800BE1FD4 /* RNHyperSnapSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNHyperSnapSDK.h; sourceTree = "<group>"; };
 		04BAB767230001DC00F5091A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		04CDAF3E23B3216100BCE20E /* RNHVFaceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNHVFaceConfig.h; sourceTree = "<group>"; };
-		04CDAF3F23B3216200BCE20E /* RNHVDocConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNHVDocConfig.m; sourceTree = "<group>"; };
-		04CDAF4023B3216200BCE20E /* RNHVDocConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNHVDocConfig.h; sourceTree = "<group>"; };
-		04CDAF4123B3216200BCE20E /* RNHVFaceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNHVFaceConfig.m; sourceTree = "<group>"; };
 		04DA34CB2EE6C32775EE7C9F /* Pods-HyperSnapDemoApp_React.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperSnapDemoApp_React.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyperSnapDemoApp_React/Pods-HyperSnapDemoApp_React.release.xcconfig"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -475,10 +469,6 @@
 				0478D65A20E6936700BE1FD4 /* RNHyperSnapParams.h */,
 				0478D65B20E6936700BE1FD4 /* RNHyperSnapParams.m */,
 				0478D66120E6936800BE1FD4 /* RNHyperSnapSDK.h */,
-				04CDAF4023B3216200BCE20E /* RNHVDocConfig.h */,
-				04CDAF3F23B3216200BCE20E /* RNHVDocConfig.m */,
-				04CDAF3E23B3216100BCE20E /* RNHVFaceConfig.h */,
-				04CDAF4123B3216200BCE20E /* RNHVFaceConfig.m */,
 				0478D65E20E6936700BE1FD4 /* RNHyperSnapSDK.m */,
 				0436777F23B314AC002097D1 /* RNHVNetworkHelper.h */,
 				0436778023B314BE002097D1 /* RNHVNetworkHelper.m */,
@@ -1055,10 +1045,8 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				0478D66520E6936800BE1FD4 /* RNHVFaceCapture.m in Sources */,
-				04CDAF4323B3216200BCE20E /* RNHVFaceConfig.m in Sources */,
 				0436778123B314BE002097D1 /* RNHVNetworkHelper.m in Sources */,
 				0478D66220E6936800BE1FD4 /* RNHyperSnapParams.m in Sources */,
-				04CDAF4223B3216200BCE20E /* RNHVDocConfig.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				0478D66320E6936800BE1FD4 /* RNHVDocsCapture.m in Sources */,
 				0478D66420E6936800BE1FD4 /* RNHyperSnapSDK.m in Sources */,
