@@ -28,6 +28,7 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
         super(reactContext);
     }
     HVFaceConfig faceConfig;
+    boolean hasBeenCalled;
     @Override
     public String getName() {
         return "RNHVFaceCapture";
@@ -139,42 +140,52 @@ public class RNHVFaceCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void start( final Callback resultCallback) {
+        hasBeenCalled = false;
 
         HVFaceActivity.start(getCurrentActivity(), getFaceConfig(), new FaceCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result, JSONObject headers) {
 
-
-                WritableMap errorObj = Arguments.createMap();
-                WritableMap resultsObj = Arguments.createMap();
-                WritableMap headersObj = Arguments.createMap();
-                if (error != null) {
-                    errorObj.putInt("errorCode", error.getErrorCode());
-                    errorObj.putString("errorMessage", error.getErrorMessage());
-                    resultCallback.invoke(errorObj, null, null);
-                } else {
-                    if (result != null) {
-                        resultsObj = null;
-                        try {
-                            resultsObj = RNHVNetworkHelper.convertJsonToMap(result);
-                        }catch(Exception e){
-
+                try {
+                    WritableMap errorObj = Arguments.createMap();
+                    WritableMap resultsObj = Arguments.createMap();
+                    WritableMap headersObj = Arguments.createMap();
+                    if (error != null) {
+                        errorObj.putInt("errorCode", error.getErrorCode());
+                        errorObj.putString("errorMessage", error.getErrorMessage());
+                        if(!hasBeenCalled) {
+                            hasBeenCalled = true;
+                            resultCallback.invoke(errorObj, null, null);
                         }
-                        resultsObj.putString("response",result.toString());
-                    }
-                    if (headers != null) {
-                        headersObj = null;
-                        try {
-                            headersObj = RNHVNetworkHelper.convertJsonToMap(headers);
-                        }catch(Exception e){
+                    } else {
+                        if (result != null) {
+                            resultsObj = null;
+                            try {
+                                resultsObj = RNHVNetworkHelper.convertJsonToMap(result);
+                            } catch (Exception e) {
 
+                            }
+                            resultsObj.putString("response", result.toString());
                         }
-                    }
-                    resultCallback.invoke(null, resultsObj, headersObj);
+                        if (headers != null) {
+                            headersObj = null;
+                            try {
+                                headersObj = RNHVNetworkHelper.convertJsonToMap(headers);
+                            } catch (Exception e) {
 
-                }
+                            }
+                        }
+                        if(!hasBeenCalled) {
+                            hasBeenCalled = true;
+                            resultCallback.invoke(null, resultsObj, headersObj);
+                        }
+
+                    }
+
+            }catch(Exception e){
+
             }
-        });
+        }});
 
     }
 

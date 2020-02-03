@@ -38,6 +38,8 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
     HVDocConfig.Document doc;
 
+    boolean hasBeenCalled;
+
 
     @Override
     public String getName() {
@@ -46,7 +48,7 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
 
     public HVDocConfig getDocConfig() {
-        if(this.docConfig == null) {
+        if (this.docConfig == null) {
             this.docConfig = new HVDocConfig();
         }
         return this.docConfig;
@@ -54,10 +56,10 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setCustomUIStrings(String customStrings){
+    public void setCustomUIStrings(String customStrings) {
         try {
             JSONObject stringObj = new JSONObject();
-            if( customStrings == null && !customStrings.trim().isEmpty() )
+            if (customStrings == null && !customStrings.trim().isEmpty())
                 stringObj = new JSONObject(customStrings);
             getDocConfig().setCustomUIStrings(stringObj);
         } catch (JSONException e) {
@@ -156,31 +158,47 @@ public class RNHVDocsCapture extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void start(final Callback resultCallback) {
- 
+        hasBeenCalled = false;
+
         HVDocsActivity.start(getCurrentActivity(), getDocConfig(), new DocCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result) {
-                WritableMap errorObj = Arguments.createMap();
-                WritableMap resultsObj = Arguments.createMap();
-                if (error != null) {
-                    errorObj.putInt("errorCode", error.getErrorCode());
-                    errorObj.putString("errorMessage", error.getErrorMessage());
-                    resultCallback.invoke(errorObj, null);
-                } else {
-                    Iterator<?> keys = result.keys();
-                    while (keys.hasNext()) {
-                        String key = (String) keys.next();
-                        try {
-                            resultsObj.putString(key, (String) result.get(key));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                try {
+
+                    WritableMap errorObj = Arguments.createMap();
+                    WritableMap resultsObj = Arguments.createMap();
+                    if (error != null) {
+                        errorObj.putInt("errorCode", error.getErrorCode());
+                        errorObj.putString("errorMessage", error.getErrorMessage());
+                        if (!hasBeenCalled) {
+                            hasBeenCalled = true;
+                            resultCallback.invoke(errorObj, null);
+
+                        }
+
+                    } else {
+                        Iterator<?> keys = result.keys();
+                        while (keys.hasNext()) {
+                            String key = (String) keys.next();
+                            try {
+                                resultsObj.putString(key, (String) result.get(key));
+                            } catch (JSONException e) {
+
+                            }
+                        }
+                        if (!hasBeenCalled) {
+                            hasBeenCalled = true;
+                            resultCallback.invoke(null, resultsObj);
                         }
                     }
-                    resultCallback.invoke(null, resultsObj);
+                } catch (
+                        Exception e)
+
+                {
+
                 }
-            }
-        });
+            } });
+
+        }
 
     }
-
-}
