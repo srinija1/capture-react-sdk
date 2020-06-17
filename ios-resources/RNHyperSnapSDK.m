@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE()
 
 
 RCT_EXPORT_METHOD(initialize:(NSString *)appId appKey:(NSString *)appKey region:(Region)region product:(Product)product){
-  [HyperSnapSDK initializeWithAppId:appId appKey:appKey region: region product: product];
+  [HyperSnapSDKConfig initializeWithAppId:appId appKey:appKey region: region product: product];
  }
 
 
